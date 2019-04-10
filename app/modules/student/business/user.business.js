@@ -25,6 +25,24 @@ const registration = async (req, res) => {
 const getAllUserList = async () => {
   return await Student.find({});
 };
+//xxx xxx xxx xxxx xxxx xxxx
+const getStudentByIds = async id => {
+  let res = await Student.findById(id);
+  if (!res) throw msg.invalidProductId;
+  return res;
+};
+//xxx xxxx xxxx xxxx xxx xxx
+const updateStudent = async (data, id) => {
+  let res = await Student.findByIdAndUpdate(id, { $set: data }, { new: true });
+  if (!res) throw msg.invalidProductId;
+  return res;
+};
+//xxxx xxx xx xxx xxxxx xxxx xx
+const deleteStudent = async (id) => {
+  let res = await Student.findByIdAndDelete(id);
+  if (!res) throw msg.invalidProductId;
+  return res;
+};
 //xxxx xxxx xxx xxxx xxx xxx
 sendMail = async (req, res, id) => {
   rand = Math.floor(Math.random() * 10000 + 4);
@@ -57,7 +75,10 @@ sendMail = async (req, res, id) => {
 
 module.exports = {
   registration,
-  getAllUserList
+  getAllUserList,
+  getStudentByIds,
+  updateStudent,
+  deleteStudent
   // verify
 }
 

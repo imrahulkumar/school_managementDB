@@ -1,4 +1,4 @@
-const { registration, getAllUserList } = require("../business/user.business");
+const { registration, getAllUserList, getStudentByIds, updateStudent, deleteStudent } = require("../business/user.business");
 const { errorHandler } = require("../../../helpers/errorHandling.helper");
 
 
@@ -15,7 +15,6 @@ const student_registration = async function student_registration(req, res) {
 }
 
 //get all student list
-
 const student_list = async (req, res) => {
     try {
         const result = await getAllUserList();
@@ -25,10 +24,41 @@ const student_list = async (req, res) => {
     }
 };
 
+//get student by id
+const getStudentById = async (req, res) => {
+    try {
+        const result = await getStudentByIds(req.params.id);
+        res.status(200).send(result);
+    } catch (e) {
+        res.status(400).send(errorHandler(e));
+    }
+}
+
+//update student
+const updateStudents = async (req, res) => {
+    try {
+        const result = await updateStudent(req.body, req.params.id);
+        res.status(200).send(result);
+    } catch (e) {
+        res.status(400).send(errorHandler(e));
+    }
+}
+
+const deleteStudents = async (req, res) => {
+    try {
+        const result = await deleteStudent(req.params.id);
+        res.status(200).send(result);
+    } catch (e) {
+        res.status(400).send(errorHandler(e));
+    }
+}
 
 
 
 module.exports = {
     student_registration,
-    student_list
+    student_list,
+    getStudentById,
+    updateStudents,
+    deleteStudents
 };
