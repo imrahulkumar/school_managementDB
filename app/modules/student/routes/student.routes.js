@@ -14,7 +14,8 @@ router.get("/list/:id", getStudentById);
 router.put("/list/:id", updateStudents);
 // http://localhost:8080/api/user/list/5cad7f32348d06569e7145b1
 
-router.delete("/list/:id", deleteStudents)
+router.delete("/list/:id", deleteStudents);
+// http://localhost:8080/api/user/list/5cad7f32348d06569e7145b1
 
 
 module.exports = router

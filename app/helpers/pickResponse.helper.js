@@ -6,6 +6,9 @@ exports.pickRegistrationResponse = data => {
   var response = _.pick(data, ["_id", "name", "email", "phone", "token"]);
   return response;
 };
+exports.pickUserResponse = data => {
+  var response = _.pick(data, ["_id", "name", "address"]);
+};
 
 
 

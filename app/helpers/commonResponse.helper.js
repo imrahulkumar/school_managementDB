@@ -10,3 +10,4 @@ exports.socialloginResonse = async (data) => {
         message: msg.loggedIn
     };
 }
+
